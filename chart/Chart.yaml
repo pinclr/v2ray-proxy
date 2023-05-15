@@ -1,0 +1,9 @@
+apiVersion: v2
+name: v2ray-proxy
+description: v2ray proxy service based on v2fly-core
+type: application
+version: 0.1.0
+appVersion: "5.1.0"
+maintainers:
+- email: infra@pinclr.com
+  name: pinclr infra team

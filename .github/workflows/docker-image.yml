@@ -27,7 +27,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4.3.0
       with:
-        images: pinclr/v2fly-proxy
+        images: pinclr/v2ray-proxy
         tags: |
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
@@ -56,7 +56,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: pinclr/v2fly-proxy
+        repository: pinclr/v2ray-proxy
         readme-filepath: ./client/README.md
         enable-url-completion: true
 
