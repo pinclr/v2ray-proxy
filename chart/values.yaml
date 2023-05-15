@@ -6,12 +6,12 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  socks-proxy:
+  socks_proxy:
     name: socks-proxy
     type: ClusterIP
     port: 10810
     targetPort: 10810
-  http-proxy:
+  http_proxy:
     name: http-proxy
     type: ClusterIP
     port: 10811
