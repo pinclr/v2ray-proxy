@@ -1,8 +1,9 @@
+---
 name: Release Helm Chart to ArtifactHub
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
 
 jobs:
 
@@ -11,21 +12,21 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout source code
-      uses: actions/checkout@v3.3.0
+      - name: Checkout source code
+        uses: actions/checkout@v3.3.0
 
-    - name: Configure Git
+      - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-    - name: Install Helm
-      uses: azure/setup-helm@v3
+      - name: Install Helm
+        uses: azure/setup-helm@v3
 
-    - name: Run chart-releaser
-      uses: helm/chart-releaser-action@v1.5.0
-      with:
-        charts_dir: chart
-      env:
-        GITHUB_TOKEN: ${{ secrets.CR_TOKEN }}
-        CR_TOKEN: ${{ secrets.CR_TOKEN }}
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.5.0
+        with:
+          charts_dir: chart
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_TOKEN }}
+          CR_TOKEN: ${{ secrets.CR_TOKEN }}
