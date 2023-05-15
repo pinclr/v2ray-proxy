@@ -18,11 +18,11 @@ jobs:
       uses: azure/setup-helm@v3
 
     - name: Run lint for chart
-      run: helm lint .
+      run: helm lint charts/v2ray-proxy
 
     - name: Install helm plugin for unittest
       run: helm plugin install https://github.com/helm-unittest/helm-unittest
 
     - name: Run unit tests
-      run: helm unittest .
+      run: helm unittest charts/v2ray-proxy
       
