@@ -17,8 +17,12 @@ jobs:
     - name: Install Helm
       uses: azure/setup-helm@v3
 
-    - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.5.0
-        env:
-          CR_TOKEN: "${{ secrets.CR_TOKEN }}"
+    - name: Install helm plugin for unittest
+      command: helm plugin install https://github.com/helm-unittest/helm-unittest
 
+    - name: Run lint for chart
+      command: lint chart
+
+    - name: Run unit tests
+      command: helm unittest chart
+      
