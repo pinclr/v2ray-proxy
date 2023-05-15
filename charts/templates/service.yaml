@@ -8,7 +8,7 @@ spec:
     app.kubernetes.io/instance: {{ .Release.Name }}
   type: {{ .Values.service.socks_proxy.type }}
   ports:
-    - protocol: {{ .Values.service.socks_proxy.protocol | default "TCP" }}
+    - protocol: {{ .Values.service.socks_proxy.protocol | default "tcp" }}
       port: {{ .Values.service.socks_proxy.port }}
       targetPort: {{ .Values.service.socks_proxy.targetPort }}
 ---
@@ -21,6 +21,6 @@ spec:
     app.kubernetes.io/instance: {{ .Release.Name }}
   type: {{ .Values.service.http_proxy.type }}
   ports:
-    - protocol: {{ .Values.service.http_proxy.protocol | default "TCP" }}
+    - protocol: {{ .Values.service.http_proxy.protocol | default "tcp" }}
       port: {{ .Values.service.http_proxy.port }}
       targetPort: {{ .Values.service.http_proxy.targetPort }}

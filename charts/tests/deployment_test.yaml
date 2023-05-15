@@ -22,13 +22,13 @@ tests:
           content:
             containerPort: 10810
             name: socks
-            protocol: TCP
+            protocol: tcp
       - contains:
           path: spec.template.spec.containers[?(@.name == "v2ray-proxy")].ports
           content:
             containerPort: 10811
             name: http
-            protocol: TCP
+            protocol: tcp
       - notContains:
           path: spec.template.spec.containers[?(@.name == "v2ray-proxy")].ports
           content:
