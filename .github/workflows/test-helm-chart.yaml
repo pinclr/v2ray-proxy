@@ -18,11 +18,11 @@ jobs:
       uses: azure/setup-helm@v3
 
     - name: Install helm plugin for unittest
-      command: helm plugin install https://github.com/helm-unittest/helm-unittest
+      run: helm plugin install https://github.com/helm-unittest/helm-unittest
 
     - name: Run lint for chart
-      command: lint chart
+      run: lint chart
 
     - name: Run unit tests
-      command: helm unittest chart
+      run: helm unittest chart
       
