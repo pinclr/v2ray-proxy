@@ -3,6 +3,20 @@ entries:
   v2ray-proxy:
   - apiVersion: v2
     appVersion: 5.4.1
+    created: "2023-05-15T15:34:54.97778023Z"
+    description: Helm chart for v2fly-core based v2ray proxy service
+    digest: 1b80fea55dcf32b70d0d29b3f1a6cec6792837310f5b884738b918272ed4df18
+    icon: https://pinclr.github.io/v2ray-proxy/charts/v2ray-proxy/v2fly-icon.png
+    maintainers:
+    - email: robert@pinclr.com
+      name: robert
+    name: v2ray-proxy
+    type: application
+    urls:
+    - https://github.com/pinclr/v2ray-proxy/releases/download/v2ray-proxy-0.2.3/v2ray-proxy-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: 5.4.1
     created: "2023-05-15T15:24:03.436867821Z"
     description: Helm chart for v2fly-core based v2ray proxy service
     digest: 26af35c56f07d6dd30210b777fecb9751e590ff97bdb3814b99f07f91f85548b
@@ -71,4 +85,4 @@ entries:
     urls:
     - https://github.com/pinclr/v2ray-proxy/releases/download/v2ray-proxy-0.1.7/v2ray-proxy-0.1.7.tgz
     version: 0.1.7
-generated: "2023-05-15T15:24:03.436888221Z"
+generated: "2023-05-15T15:34:54.977801131Z"
