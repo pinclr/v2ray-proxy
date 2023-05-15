@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-socks
+spec:
+  selector:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.service.socks-proxy.type }}
+  ports:
+    - protocol: {{ .Values.service.socks-proxy.protocol | default "TCP" }}
+      port: {{ .Values.service.socks-proxy.port }}
+      targetPort: {{ .Values.service.socks-proxy.targetPort }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-http
+spec:
+  selector:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.service.http-proxy.type }}
+  ports:
+    - protocol: {{ .Values.service.http-proxy.protocol | default "TCP" }}
+      port: {{ .Values.service.http-proxy.port }}
+      targetPort: {{ .Values.service.http-proxy.targetPort }}

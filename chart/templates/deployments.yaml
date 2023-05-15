@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-proxy
+  labels:
+    app: v2ray-proxy
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: v2ray-proxy
+  template:
+    metadata:
+      labels:
+        app: v2ray-proxy
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: socks
+              containerPort: 10810
+              protocol: TCP
+            - name: http
+              containerPort: 10811
+              protocol: TCP
