@@ -44,7 +44,7 @@ xxx
 Add repository
 
 ```shell
-$ helm repo add v2fly https://yushiwho.github.io/charts/
+$ helm repo add pinclr https://pinclr.github.io/v2ray-proxy/charts/
 ```
 
 Install chart
