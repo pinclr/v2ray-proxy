@@ -1,0 +1,52 @@
+name: Update Helm Chart and Publish to ArtifactHub
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v3.3.0
+
+    - name: Install helm client
+      uses: helm/install-helm-client
+
+    - name: Install helm plugin for unittest
+      command: helm plugin install https://github.com/helm-unittest/helm-unittest
+
+    - name: Run unit tests
+      command: helm unittest chart
+      
+    - when:
+        condition: # (4)
+          equal: [ main, << pipeline.git.branch >> ]
+        steps:
+          - run:
+              name: Package chart # (5)
+              command: helm package charts/* -d .deploy
+          - run:
+              name: Install chart releaser
+              command: |
+                curl -L -o /tmp/cr.tgz https://github.com/helm/chart-releaser/releases/download/v1.5.0/chart-releaser_1.5.0_linux_amd64.tar.gz
+                tar -xv -C /tmp -f /tmp/cr.tgz
+                mv /tmp/cr ~/bin/cr
+          - run:
+              name: Release chart # (6)
+              command: cr upload -o piomin -r helm-charts -p .deploy
+          - run:
+              name: Create index on GitHub pages # (7)
+              command: |
+                git config user.email "infra@pinclr.com"
+                git config user.name "Pinclr"
+                git checkout --orphan gh-pages
+                cr index -i ./index.yaml -p .deploy -o piomin -r helm-charts
+                git add index.yaml
+                git commit -m "New release"
+                git push --set-upstream --force origin gh-pages
+
