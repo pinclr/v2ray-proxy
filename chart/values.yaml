@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: pinclr/v2ray-proxy
-  tag: "latest"
+  tag: latest
   pullPolicy: IfNotPresent
 
 service:
