@@ -19,9 +19,6 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: socks
-              containerPort: 10810
-              protocol: TCP
             - name: http
               containerPort: 10811
               protocol: TCP

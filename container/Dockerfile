@@ -27,7 +27,7 @@ COPY --from=builder /usr/local/share/v2ray/geosite.dat /usr/local/share/v2ray/ge
 COPY --from=builder /usr/local/share/v2ray/geoip.dat /usr/local/share/v2ray/geoip.dat
 COPY --from=builder /etc/v2ray/config.json /etc/v2ray/config.json
 
-EXPOSE 10810 10811
+EXPOSE 10811
 
 CMD ["/usr/bin/v2ray", "run", "-c", "/etc/v2ray/config.json"]
 
